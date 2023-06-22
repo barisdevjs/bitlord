@@ -1,0 +1,37 @@
+<div class="content" role="main">
+    <!--  Steps -->
+    <h2>Personal Information</h2>
+    <input type="hidden" #selection>
+    <div class="card-container">
+      <button class="card card-small" (click)="selection.value = 'component'" tabindex="0">
+        <span>Full Name</span>
+      </button>
+  
+      <button class="card card-small" (click)="selection.value = 'material'" tabindex="0">
+        <span>Cell Phone</span>
+      </button>
+  
+      <button class="card card-small" (click)="selection.value = 'pwa'" tabindex="0">
+        <span>Github Repo</span>
+      </button>
+  
+      <button class="card card-small" (click)="selection.value = 'dependency'" tabindex="0">
+        <span>Netlify Link</span>
+      </button>
+  
+      <button class="card card-small" (click)="selection.value = 'test'" tabindex="0">
+        <span>Linkedln</span>
+      </button>
+  
+    </div>
+  
+    <!-- Terminal -->
+    <div class="terminal" [ngSwitch]="selection.value">
+        <pre *ngSwitchDefault>Barış SAVAŞ</pre>
+        <pre *ngSwitchCase="'material'">0 542 731 81 77</pre>
+        <pre *ngSwitchCase="'pwa'">Github Repo</pre>
+        <pre *ngSwitchCase="'dependency'">Netlify</pre>
+        <pre *ngSwitchCase="'test'">https://www.linkedin.com/in/bar%C4%B1%C5%9F-sava%C5%9F-6300b3212/
+        </pre>
+    </div>
+</div>
