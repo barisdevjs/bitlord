@@ -4,6 +4,14 @@
     alt="Bitlo Logo"
     src="./assets/bitlo_logo_white_@2x.webp"
   />
+  <div>
+    <a mat-button routerLink="/">Home</a>
+    <a mat-button routerLink="/login">Login</a>
+    <a mat-button routerLink="/markets">Market</a>
+    <!-- AUTH -->
+    <a mat-button routerLink="/logout">Log out</a>
+    <a mat-button routerLink="/profile">Profile</a>
+  </div>
     <button mat-flat-button color="primary">
       LOG IN / LOG OUT
     </button>
@@ -12,7 +20,7 @@
 
 
 
+<router-outlet></router-outlet>
 <!-- Footer -->
 <app-footer></app-footer>
-<router-outlet></router-outlet>
     

@@ -5,30 +5,6 @@
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 8px 0;
-}
-
-p {
-  margin: 0;
-}
-
-body {
-  height: 100vh;
-}
-
-
-
-p {
-  margin: 0;
 }
 
 body {
@@ -41,7 +17,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 60px;
+    height: 3rem;
     display: flex;
     justify-content: space-between;
     padding-inline: 4rem;
@@ -208,29 +184,3 @@ body {
     }
 
   }
-  .mat-toolbar{
-    background-color: cornflowerblue;
-    color: white;
-    width: auto;
-  }
-  .mat-button{
-     color: white;
-  }
-
-
-  mat-sidenav-container, mat-sidenav-content, mat-sidenav {
-    height: 100%;
-}
-
-mat-sidenav {
-    width: 250px;
-}
-
-main {
-    padding: 10px;
-}
-
-html, body { 
-  margin: 0;
-  height: 100%;
-}

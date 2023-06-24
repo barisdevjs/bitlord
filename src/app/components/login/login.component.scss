@@ -1,0 +1,29 @@
+.example-form {
+  min-width: 100px;
+  max-width: 500px;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-card-content {
+  min-width: 300px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  row-gap: 1.25rem;
+}
+
+
+
+
+

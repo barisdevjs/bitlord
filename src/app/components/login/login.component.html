@@ -1,1 +1,36 @@
-<p>login works!</p>
+<div class="flex flex-col">
+    <mat-card>
+        <form [formGroup]="logForm" class="example-form" (ngSubmit)="logUser()">
+                <h3 class="text-center">Please enter your credentials</h3>
+            <mat-card-content>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput formControlName="identifier" placeholder="test@test.com">
+                    <mat-error *ngIf="logForm.get('identifier')?.hasError('eidentifier') && !logForm.get('identifier')?.hasError('required')">
+                        Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="logForm.get('identifier')?.hasError('required')">
+                        Email is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Enter your password</mat-label>
+                    <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" placeholder="123abc">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="logForm.get('password')?.hasError('minlength')">
+                        Password must have a minimum length of 3 characters
+                    </mat-error>
+                    <mat-error *ngIf="logForm.get('password')?.hasError('maxlength')">
+                        Password must have a minimum length of 6 characters
+                    </mat-error>
+                </mat-form-field>
+                <div class="flex justify-center">
+                    <button class="w-40" type="submit" mat-raised-button color="primary">Login</button>
+                </div>
+            </mat-card-content>
+        </form>
+    </mat-card>
+</div>

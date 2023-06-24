@@ -14,6 +14,13 @@ import { MatSidenavModule} from '@angular/material/sidenav';
 import { FooterComponent } from './components/footer/footer.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule} from '@angular/material/list';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatCardModule} from '@angular/material/card';
+import { HttpClientModule } from '@angular/common/http';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -34,6 +41,13 @@ import { MatListModule} from '@angular/material/list';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatCardModule,
+    HttpClientModule,
+    MatSnackBarModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
