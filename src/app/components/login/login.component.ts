@@ -4,7 +4,7 @@ import { RequestsService } from 'src/app/services/requests.service';
 import { LoginResponse, SignUser } from 'src/app/types/user-type';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { concatMap, delay, tap } from 'rxjs';
+import { delay, tap } from 'rxjs';
 
 
 @Component({
@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
     if (this.logForm.valid) {
       this.reqService.signUser(this.logForm.value).pipe(
         tap((data: LoginResponse) => {
-          console.log(data);
           data?.token && localStorage.setItem('token', data?.token);
           this.toastr.success(data?.message, 'Success', { timeOut: 3000 });
         }),

@@ -21,6 +21,8 @@ import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ToastrModule } from 'ngx-toastr';
+import { LogoutComponent } from './components/logout/logout.component';
+import { MarketDetailsComponent } from './components/market-details/market-details.component';
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import { ToastrModule } from 'ngx-toastr';
     LoginComponent,
     MarketsComponent,
     FooterComponent,
+    LogoutComponent,
+    MarketDetailsComponent,
   ],
   imports: [
     BrowserModule,
