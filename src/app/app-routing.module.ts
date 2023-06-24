@@ -5,6 +5,8 @@ import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [ 
   { path: '', component: HomeComponent },
+  // { path: '', component: LOGIN },
+
   { path: 'profile',  component : ProfileComponent }, 
   // { path: 'calendar', component : CalendarComponent, canActivate:[AuthGuard] },
   // { path: '**', redirectTo: '/', pathMatch: 'full' }
