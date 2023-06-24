@@ -7,10 +7,14 @@ import { AuthGuard } from './guards/auth.guard';
 import { MarketsComponent } from './components/markets/markets.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { MarketDetailsComponent } from './components/market-details/market-details.component';
+import { BalancesComponent } from './components/balances/balances.component';
+import { OpenOrdersComponent } from './components/open-orders/open-orders.component';
 
 const routes: Routes = [ 
   { path: '', component: HomeComponent },
-  { path: 'profile',  component : ProfileComponent, canActivate:[AuthGuard] }, 
+  { path: 'profile',  component : ProfileComponent, canActivate:[AuthGuard]}, 
+  { path: 'profile/openorders',  component : OpenOrdersComponent, canActivate:[AuthGuard]}, 
+  { path: 'profile/balances',  component : BalancesComponent, canActivate:[AuthGuard]}, 
   { path: 'login',  component : LoginComponent },
   { path: 'logout',  component : LogoutComponent, canActivate:[AuthGuard] }, 
 

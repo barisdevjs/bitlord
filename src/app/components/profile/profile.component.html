@@ -14,3 +14,8 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table-header"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-row"></tr>
 </table>
+
+<div class="flex mt-4 justify-evenly">
+  <a mat-raised-button routerLink="/profile/balances">Bakiyeler</a>
+  <a mat-raised-button routerLink="/profile/openorders">Açık Emirler</a>
+</div>

@@ -10,21 +10,23 @@ import { HomeComponent } from './components/home/home.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { LoginComponent } from './components/login/login.component';
 import { MarketsComponent } from './components/markets/markets.component';
-import { MatSidenavModule} from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { FooterComponent } from './components/footer/footer.component';
 import { MatIconModule } from '@angular/material/icon';
-import { MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ToastrModule } from 'ngx-toastr';
 import { LogoutComponent } from './components/logout/logout.component';
 import { MarketDetailsComponent } from './components/market-details/market-details.component';
 import { AuthInterceptor } from '../app/interceptor/auth.interceptor';
 import { MatTableModule } from '@angular/material/table';
+import { BalancesComponent } from './components/balances/balances.component';
+import { OpenOrdersComponent } from './components/open-orders/open-orders.component';
 
 
 @NgModule({
@@ -37,6 +39,8 @@ import { MatTableModule } from '@angular/material/table';
     FooterComponent,
     LogoutComponent,
     MarketDetailsComponent,
+    BalancesComponent,
+    OpenOrdersComponent,
   ],
   imports: [
     BrowserModule,
