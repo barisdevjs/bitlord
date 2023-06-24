@@ -7,7 +7,7 @@
                     <mat-label>Email</mat-label>
                     <input type="email" matInput formControlName="identifier" placeholder="test@test.com">
                     <mat-error *ngIf="logForm.get('identifier')?.hasError('eidentifier') && !logForm.get('identifier')?.hasError('required')">
-                        Please enter a valid email address
+                        Lütfen geçerli bir e-posta adresi giriniz
                     </mat-error>
                     <mat-error *ngIf="logForm.get('identifier')?.hasError('required')">
                         Email is <strong>required</strong>

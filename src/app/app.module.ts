@@ -18,11 +18,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ToastrModule } from 'ngx-toastr';
 import { LogoutComponent } from './components/logout/logout.component';
 import { MarketDetailsComponent } from './components/market-details/market-details.component';
+import { AuthInterceptor } from '../app/interceptor/auth.interceptor';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -52,8 +54,11 @@ import { MarketDetailsComponent } from './components/market-details/market-detai
     HttpClientModule,
     MatSnackBarModule,
     ToastrModule.forRoot(),
+    MatTableModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

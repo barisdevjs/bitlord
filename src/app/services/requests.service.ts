@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { LoginResponse, SignUser } from '../types/user-type';
+import { Observable, of } from 'rxjs';
+import { LoginResponse, ProfileResponse, SignUser } from '../types/user-type';
 
 const token = localStorage.getItem('token');
 
@@ -19,14 +19,20 @@ export class RequestsService {
 
   constructor(private http: HttpClient) { }
 
-  private loginURL = 'https://akademi-cp.bitlo.com/api/interview/auth/login'
+  private loginURL = 'https://akademi-cp.bitlo.com/api/interview/auth/login';
+  private meURL = "https://akademi-cp.bitlo.com/api/interview/auth/me";
 
   signUser(inputs: SignUser): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(this.loginURL, inputs, httpOptions)
   }
 
-  getProfile() {
+  isLoggedIn(): Observable<boolean> {
+    const flag: boolean = !!localStorage.getItem('token');
+    return of(flag);
+  }
 
+  getProfile(): Observable<ProfileResponse> {
+    return this.http.post<ProfileResponse>(this.meURL, httpOptions);
   }
 
 }
