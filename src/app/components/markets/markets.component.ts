@@ -3,6 +3,7 @@ import { RequestsService } from 'src/app/services/requests.service';
 import { MarketsResponse } from 'src/app/types/user-type';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-markets',
@@ -12,7 +13,8 @@ import { MatTableDataSource } from '@angular/material/table';
 export class MarketsComponent implements OnInit {
 
   constructor(
-    private reqService: RequestsService
+    private reqService: RequestsService,
+    private router: Router
   ) { }
 
   pageSizeOptions: number[] = [5, 10, 15,20];
@@ -23,6 +25,9 @@ export class MarketsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   marketsArr: MatTableDataSource<MarketsResponse> = new MatTableDataSource<MarketsResponse>();
   displayedColumns: string[] = ['rowIndex', 'marketCode', 'currentQuote', 'change24h', 'change24hPercent', 'highestQuote24h', 'lowestQuote24h'];
+
+  tooltipClass = 'bg-blue-600 text-sm';
+
 
   ngAfterViewInit() {
     this.marketsArr.paginator = this.paginator;
@@ -50,21 +55,27 @@ export class MarketsComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value.trim();
   
-    this.marketsArr.filter = filterValue; // Update the filter value
+    if (filterValue === "") {
+      this.marketsArr.filter = ''; 
+    } else {
+      this.marketsArr.filter = filterValue; 
   
-    // Define custom filter predicate for case-sensitive filtering
-    this.marketsArr.filterPredicate = (data, filter) => {
-      return data.marketCode.includes(filter);
-    };
-  
-    // Trigger the filtering process
-    this.marketsArr.filter = filterValue;
-  
+      this.marketsArr.filterPredicate = (data, filter) => {
+        return data.marketCode.includes(filter);
+      };
+    }
   
     if (this.marketsArr.paginator) {
       this.marketsArr.paginator.firstPage();
     }
   }
+  
+
+  navigateToMarketDetails(row: any) {
+    const marketCode = row.marketCode; 
+    this.router.navigateByUrl(`/markets/${marketCode}`);
+  }
+  
 
   getStyle(change24h: number): object {
     if (change24h < 0) {

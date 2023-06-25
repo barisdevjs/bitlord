@@ -30,6 +30,7 @@ import { OpenOrdersComponent } from './components/open-orders/open-orders.compon
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { FormsModule } from '@angular/forms';
     MatPaginatorModule,
     MatCheckboxModule,
     FormsModule,
+    MatTooltipModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
