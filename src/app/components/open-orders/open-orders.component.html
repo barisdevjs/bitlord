@@ -1,4 +1,45 @@
-<h1>XXXXXXXXXXXXXX</h1>
-<h1>XXXXXXXXXXXXXX</h1>
+<div class=" flex flex-col justify-start items-center mx-auto mt-16 gap-4">
+    <h1>Open Orders</h1>
+<table mat-table [dataSource]="openOrdersArr" class="mat-elevation-z8 w-full">
+    <ng-container matColumnDef="marketCode">
+        <th mat-header-cell *matHeaderCellDef> Market Code </th>
+        <td mat-cell *matCellDef="let element"> {{ element.marketCode }} </td>
+    </ng-container>
+    <ng-container matColumnDef="orderSide">
+        <th mat-header-cell *matHeaderCellDef> Order Side </th>
+        <td mat-cell *matCellDef="let element"
+        [ngClass]="{'text-red-500': element.orderSide === 'SELL', 'text-green-500': element.orderSide === 'BUY'}"
+        > {{ element.orderSide }} </td>
+    </ng-container>
+    <ng-container matColumnDef="orderDate">
+        <th mat-header-cell *matHeaderCellDef> Order Date </th>
+        <td mat-cell *matCellDef="let element"> {{ element.orderDate  }} </td>
+    </ng-container>
+    <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <td mat-cell *matCellDef="let element"> {{ element.price | number:'1.2-2' }} </td>
+    </ng-container>
+    <ng-container matColumnDef="orderAmount">
+        <th mat-header-cell *matHeaderCellDef> Order Amount </th>
+        <td mat-cell *matCellDef="let element"> {{ element.orderAmount  }} </td>
+    </ng-container>
+    <ng-container matColumnDef="fillAmount">
+        <th mat-header-cell *matHeaderCellDef> Fill Amount </th>
+        <td mat-cell *matCellDef="let element"
+        [ngStyle]="{'color': element.fillAmount === 0 ? 'red' : 'inherit'}"
+        > {{ element.fillAmount  }} </td>
+    </ng-container>
+    <ng-container matColumnDef="fillPercent">
+        <th mat-header-cell *matHeaderCellDef> Fill Percent </th>
+        <td mat-cell *matCellDef="let element"
+        [ngStyle]="{'color': element.fillPercent === 0.00 ? 'red' : 'inherit'}"
+        > {{ element.fillPercent | number:'1.2-2' }} </td>
+    </ng-container>
+    <tr mat-header-row class="bg-gray-200 text-lg font-medium " *matHeaderRowDef="displayedColumns; "></tr>
+    <tr mat-row  *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+</div>
+
 
 

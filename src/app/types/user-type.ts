@@ -43,3 +43,17 @@ export interface Balances {
 export interface BalancesResponse extends GeneralI {
     balances?: Balances[]
 }
+
+export interface OpenOrders {
+    marketCode:string;
+    orderSide:string;
+    orderDate:string;
+    price:number;
+    orderAmount:number;
+    fillAmount:number;
+    fillPercent:number;
+}
+
+export interface OpenOrdersResponse extends GeneralI {
+    openOrders?: OpenOrders[]
+}

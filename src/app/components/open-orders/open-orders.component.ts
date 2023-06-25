@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { ToastrService } from 'ngx-toastr';
+import { RequestsService } from 'src/app/services/requests.service';
+import { OpenOrders, OpenOrdersResponse } from 'src/app/types/user-type';
 
 @Component({
   selector: 'app-open-orders',
@@ -7,9 +11,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OpenOrdersComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private reqService: RequestsService,
+    private toastr: ToastrService
+  ) { }
 
+  openOrdersArr : MatTableDataSource<OpenOrders> = new MatTableDataSource<OpenOrders>();
+  displayedColumns: string[] = ["marketCode","orderSide","orderDate", "price", "orderAmount", "fillAmount", "fillPercent"];
+  
   ngOnInit(): void {
+    this.reqService.getOpenOrders().subscribe({
+      next : (value: OpenOrdersResponse) => {
+        this.toastr.success(value.message, 'Data fetched 😎', { timeOut: 3000 });
+        const openOrders = ( value.openOrders ?? []).map((order: OpenOrders) => {
+          order.fillPercent = Number(order.fillAmount / order.orderAmount) * 100;
+          return order;
+        });
+        this.openOrdersArr = new MatTableDataSource<OpenOrders>(openOrders);
+        console.log(this.openOrdersArr);
+      },
+      error: (err) => {
+        this.toastr.error('CODE' + err.error.code, err.error.message, { timeOut: 3000 });
+      }
+    })
   }
 
 }
