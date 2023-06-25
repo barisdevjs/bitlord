@@ -1,1 +1,35 @@
-<p>balances works!</p>
+<div class=" flex flex-col justify-start items-center mx-auto mt-16 gap-6">
+
+    <div class="self-start">
+        <mat-checkbox  [(ngModel)]="showLessThanOne" (change)="onCheckboxChange()">
+            Düşük Bakiyeleri Göster / Gizle</mat-checkbox>
+    </div>
+    <table mat-table [dataSource]="balancesArr" class="mat-elevation-z8 w-full">
+        <ng-container matColumnDef="rowIndex" >
+            <th mat-header-cell *matHeaderCellDef> No </th>
+            <td mat-cell *matCellDef="let element;index as i;"> {{ i+1 }} </td>
+        </ng-container>
+        <ng-container matColumnDef="assetLogo">
+            <th mat-header-cell *matHeaderCellDef> Logo </th>
+            <td mat-cell *matCellDef="let element">
+              <img [src]="element.assetLogo" alt="Logo" width="24" height="24">
+            </td>
+          </ng-container>
+          
+          
+        <ng-container matColumnDef="assetCode">
+            <th mat-header-cell *matHeaderCellDef> Asset Code </th>
+            <td mat-cell *matCellDef="let element"> {{ element.assetCode }} </td>
+        </ng-container>
+        <ng-container matColumnDef="availableAmount">
+            <th mat-header-cell *matHeaderCellDef> Available Amount </th>
+            <td mat-cell *matCellDef="let element"> {{ element.availableAmount | number:'1.2-2'}} </td>
+        </ng-container>
+        <ng-container matColumnDef="availableAmountTRYValue">
+            <th mat-header-cell *matHeaderCellDef> Available Amount TRY </th>
+            <td mat-cell *matCellDef="let element"> {{ element.availableAmountTRYValue | number:'1.2-2' }} </td>
+        </ng-container>
+        <tr mat-header-row class="bg-gray-200 text-lg font-medium " *matHeaderRowDef="displayedColumns; "></tr>
+        <tr mat-row  *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

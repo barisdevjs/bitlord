@@ -17,11 +17,11 @@ const routes: Routes = [
   { path: 'profile/balances',  component : BalancesComponent, canActivate:[AuthGuard]}, 
   { path: 'login',  component : LoginComponent },
   { path: 'logout',  component : LogoutComponent, canActivate:[AuthGuard] }, 
-
   { path: 'markets',  component : MarketsComponent }, 
   { path: 'markets/:marketCode', component: MarketDetailsComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

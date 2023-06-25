@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map, of } from 'rxjs';
-import { LoginResponse, MarketsResponse, ProfileResponse, SignUser } from '../types/user-type';
+import { BalancesResponse, LoginResponse, MarketsResponse, ProfileResponse, SignUser } from '../types/user-type';
 
 const token = localStorage.getItem('token');
 
@@ -22,6 +22,7 @@ export class RequestsService {
   private loginURL = 'https://akademi-cp.bitlo.com/api/interview/auth/login';
   private meURL = "https://akademi-cp.bitlo.com/api/interview/auth/me";
   private marketsURL = "https://akademi-cp.bitlo.com/api/interview/markets";
+  private balancesURL = "https://akademi-cp.bitlo.com/api/interview/auth/balances";
 
   signUser(inputs: SignUser): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(this.loginURL, inputs, httpOptions)
@@ -47,6 +48,10 @@ export class RequestsService {
           });
         })
       );
+  }
+
+  getBalances(): Observable<BalancesResponse> {
+    return this.http.post<BalancesResponse>(this.balancesURL, httpOptions)
   }
   
 
