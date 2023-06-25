@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { LoginResponse, ProfileResponse, SignUser } from '../types/user-type';
+import { Observable, map, of } from 'rxjs';
+import { LoginResponse, MarketsResponse, ProfileResponse, SignUser } from '../types/user-type';
 
 const token = localStorage.getItem('token');
 
@@ -21,6 +21,7 @@ export class RequestsService {
 
   private loginURL = 'https://akademi-cp.bitlo.com/api/interview/auth/login';
   private meURL = "https://akademi-cp.bitlo.com/api/interview/auth/me";
+  private marketsURL = "https://akademi-cp.bitlo.com/api/interview/markets";
 
   signUser(inputs: SignUser): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(this.loginURL, inputs, httpOptions)
@@ -34,5 +35,21 @@ export class RequestsService {
   getProfile(): Observable<ProfileResponse> {
     return this.http.post<ProfileResponse>(this.meURL, httpOptions);
   }
+
+  getMarkets(): Observable<MarketsResponse[]> {
+    return this.http.get<any>(this.marketsURL, httpOptions)
+      .pipe(
+        map((response: any[]) => {
+          // Extract the desired properties from each object in the array
+          return response.map((obj) => {
+            const { weightedAverage24h, volume24h, notionalVolume24h, ask, bid, ...rest } = obj;
+            return rest as MarketsResponse;
+          });
+        })
+      );
+  }
+  
+
+  
 
 }

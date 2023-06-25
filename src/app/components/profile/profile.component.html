@@ -1,3 +1,5 @@
+<div class="container flex flex-col justify-center items-center h-screen mx-auto w-4/12">
+
 <h1 class="text-center">Profile Information</h1>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -15,7 +17,8 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-row"></tr>
 </table>
 
-<div class="flex mt-4 justify-evenly">
+<div class="flex mt-4 gap-12">
   <a mat-raised-button routerLink="/profile/balances">Bakiyeler</a>
   <a mat-raised-button routerLink="/profile/openorders">Açık Emirler</a>
+</div>
 </div>

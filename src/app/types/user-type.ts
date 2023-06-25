@@ -9,17 +9,6 @@ export interface LoginResponse {
     token ?: string;
 }
 
-// {
-//     "code": 0,
-//     "message": "Auth success",
-//     "me": {
-//       "firstName": "Elon",
-//       "lastName": "Musk",
-//       "dateOfBirth": "1971-06-28",
-//       "phoneNumber": "+905320000001",
-//       "identityNumber": "12345678901"
-//     }
-//   }
 
 export interface ProfileResponse {
     code : number;
@@ -33,4 +22,18 @@ export interface ProfileMe {
     dateOfBirth : string;
     phoneNumber : string;
     identityNumber : string;
+}
+
+export interface MarketsResponse {
+    marketCode : string;
+    currentQuote : string;
+    change24h : string;
+    change24hPercent: string;
+    highestQuote24h: string;
+    lowestQuote24h: string;
+    // weightedAverage24h:string;
+    // volume24h:string;
+    // notionalVolume24h:string;
+    // ask:string;
+    // bid:string;
 }

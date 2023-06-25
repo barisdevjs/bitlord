@@ -27,6 +27,7 @@ import { AuthInterceptor } from '../app/interceptor/auth.interceptor';
 import { MatTableModule } from '@angular/material/table';
 import { BalancesComponent } from './components/balances/balances.component';
 import { OpenOrdersComponent } from './components/open-orders/open-orders.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { OpenOrdersComponent } from './components/open-orders/open-orders.compon
     HttpClientModule,
     MatSnackBarModule,
     ToastrModule.forRoot(),
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

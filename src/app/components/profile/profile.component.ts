@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { RequestsService } from 'src/app/services/requests.service';
-import { ProfileMe, ProfileResponse } from 'src/app/types/user-type';
+import { ProfileResponse } from 'src/app/types/user-type';
 import { dateFormatter, formatPhoneNumberValue } from 'src/app/utils/converters';
 
 @Component({
