@@ -44,7 +44,7 @@ export class RequestsService {
         map((response: any[]) => {
           // Extract the desired properties from each object in the array
           return response.map((obj) => {
-            const { weightedAverage24h, volume24h, notionalVolume24h, ask, bid, ...rest } = obj;
+            const { volume24h, notionalVolume24h, ask, bid, ...rest } = obj;
             return rest as MarketsResponse;
           });
         })

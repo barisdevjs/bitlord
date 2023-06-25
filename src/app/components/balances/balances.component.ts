@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { RequestsService } from 'src/app/services/requests.service';
 import { Balances, BalancesResponse } from 'src/app/types/user-type';
+import { getLogoUrl } from 'src/app/utils/converters';
 
 @Component({
   selector: 'app-balances',
@@ -26,7 +27,7 @@ export class BalancesComponent implements OnInit {
       next: (value: BalancesResponse) => {
         this.toastr.success(value.message, 'Data fetched 😎', { timeOut: 3000 });
         const balances = (value.balances ?? []).map((balance: Balances) => {
-          balance.assetLogo = this.getLogoUrl(balance.assetCode);
+          balance.assetLogo = getLogoUrl(balance.assetCode);
           return balance;
         });
         this.balancesArr = new MatTableDataSource<Balances>(balances);
@@ -56,15 +57,7 @@ export class BalancesComponent implements OnInit {
     }
   }
 
-  getLogoUrl(assetCode: string): string {
-    const logoMap = new Map<string, string>([
-      ['BTC', 'https://static.bitlo.com/cryptologossvg/btc.svg'],
-      ['TRY', 'https://static.bitlo.com/cryptologossvg/usdt.svg'],
-      ['ETH', 'https://static.bitlo.com/cryptologossvg/eth.svg'],
-    ]);
-  
-    return logoMap.get(assetCode) || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQShl8h1-nbKHsj_rIRNgRFcyKbHV7vY8oebmiIT1OqvA&s';
-  }
+
   
 
 

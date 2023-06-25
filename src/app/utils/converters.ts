@@ -19,3 +19,13 @@ export function dateFormatter(date: string): string {
     const part3 = phoneNumber.slice(11, 13);
     return `${countryCode} ${areaCode} ${part1} ${part2} ${part3}`;
   }
+
+  export function getLogoUrl(assetCode: string): string {
+    const logoMap = new Map<string, string>([
+      ['BTC', 'https://static.bitlo.com/cryptologossvg/btc.svg'],
+      ['TRY', 'https://static.bitlo.com/cryptologossvg/usdt.svg'],
+      ['ETH', 'https://static.bitlo.com/cryptologossvg/eth.svg'],
+    ]);
+  
+    return logoMap.get(assetCode) || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQShl8h1-nbKHsj_rIRNgRFcyKbHV7vY8oebmiIT1OqvA&s';
+  }

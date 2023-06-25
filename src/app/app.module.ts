@@ -27,10 +27,11 @@ import { AuthInterceptor } from '../app/interceptor/auth.interceptor';
 import { MatTableModule } from '@angular/material/table';
 import { BalancesComponent } from './components/balances/balances.component';
 import { OpenOrdersComponent } from './components/open-orders/open-orders.component';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { SlashPipe } from './pipes/slash.pipe';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MarketDetailsComponent,
     BalancesComponent,
     OpenOrdersComponent,
+    SlashPipe
   ],
   imports: [
     BrowserModule,
