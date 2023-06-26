@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map, of } from 'rxjs';
-import { BalancesResponse, LoginResponse, MarketsResponse, OpenOrdersResponse, ProfileResponse, SignUser } from '../types/user-type';
+import { BalancesResponse, LoginResponse, MarketsResponse, OpenOrdersResponse, ProfileResponse, SignUser } from '../models/general.model';
+import { environment } from 'src/environments/environment';
 
 const token = localStorage.getItem('token');
 
@@ -15,18 +16,13 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
+
 export class RequestsService {
 
   constructor(private http: HttpClient) { }
 
-  private loginURL = 'https://akademi-cp.bitlo.com/api/interview/auth/login';
-  private meURL = "https://akademi-cp.bitlo.com/api/interview/auth/me";
-  private marketsURL = "https://akademi-cp.bitlo.com/api/interview/markets";
-  private balancesURL = "https://akademi-cp.bitlo.com/api/interview/auth/balances";
-  private openOrdersUrl = "https://akademi-cp.bitlo.com/api/interview/auth/open-orders";
-
   signUser(inputs: SignUser): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(this.loginURL, inputs, httpOptions)
+    return this.http.post<LoginResponse>(`${environment.loginURL}` , inputs, httpOptions)
   }
 
   isLoggedIn(): Observable<boolean> {
@@ -35,14 +31,14 @@ export class RequestsService {
   }
 
   getProfile(): Observable<ProfileResponse> {
-    return this.http.post<ProfileResponse>(this.meURL, httpOptions);
+    return this.http.post<ProfileResponse>(`${environment.meURL}`, httpOptions);
   }
 
   getMarkets(): Observable<MarketsResponse[]> {
-    return this.http.get<any>(this.marketsURL, httpOptions)
+    return this.http.get<any>(`${environment.marketsURL}`, httpOptions)
       .pipe(
         map((response: any[]) => {
-          // Extract the desired properties from each object in the array
+          // Extract unwanted properties from each object in the array
           return response.map((obj) => {
             const { volume24h, notionalVolume24h, ask, bid, ...rest } = obj;
             return rest as MarketsResponse;
@@ -52,11 +48,11 @@ export class RequestsService {
   }
 
   getBalances(): Observable<BalancesResponse> {
-    return this.http.post<BalancesResponse>(this.balancesURL, httpOptions)
+    return this.http.post<BalancesResponse>(`${environment.balancesURL}`, httpOptions)
   }
   
   getOpenOrders(): Observable<OpenOrdersResponse> {
-    return this.http.post<OpenOrdersResponse>(this.openOrdersUrl, httpOptions)
+    return this.http.post<OpenOrdersResponse>(`${environment.openOrdersUrl}`, httpOptions)
   }
 
   

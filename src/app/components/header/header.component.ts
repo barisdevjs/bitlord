@@ -9,17 +9,11 @@ import { RequestsService } from 'src/app/services/requests.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  isLoggedIn!: Observable<boolean>;
 
-  isLoggedIn: Observable<boolean>;
-  constructor(
-    public authService: AuthService,
-    private reqService: RequestsService
-    ) {
-    this.isLoggedIn = this.reqService.isLoggedIn()
-  }
+  constructor(public authService: AuthService) {}
+
   ngOnInit(): void {
-    console.log(this.isLoggedIn);
+    this.isLoggedIn = this.authService.isLoggedIn();
   }
-
 }
-

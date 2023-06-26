@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { RequestsService } from 'src/app/services/requests.service';
-import { OpenOrders, OpenOrdersResponse } from 'src/app/types/user-type';
+import { OpenOrders, OpenOrdersResponse } from 'src/app/models/general.model';
 
 @Component({
   selector: 'app-open-orders',

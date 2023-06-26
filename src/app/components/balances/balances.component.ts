@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { RequestsService } from 'src/app/services/requests.service';
-import { Balances, BalancesResponse } from 'src/app/types/user-type';
+import { Balances, BalancesResponse } from 'src/app/models/general.model';
 import { getLogoUrl } from 'src/app/utils/converters';
 
 @Component({

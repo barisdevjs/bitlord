@@ -3,7 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { RequestsService } from 'src/app/services/requests.service';
-import { ProfileResponse } from 'src/app/types/user-type';
+import { ProfileResponse } from 'src/app/models/general.model';
 import { dateFormatter, formatPhoneNumberValue } from 'src/app/utils/converters';
 
 @Component({

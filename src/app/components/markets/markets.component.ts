@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { RequestsService } from 'src/app/services/requests.service';
-import { MarketsResponse } from 'src/app/types/user-type';
+import { MarketsResponse } from 'src/app/models/general.model';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';

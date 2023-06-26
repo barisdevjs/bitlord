@@ -12,12 +12,11 @@
       <!-- AUTH -->
       <a mat-button routerLink="/profile">Profile</a>
     </div>
-    <a mat-raised-button [href]="isLoggedIn ? '/logout' : '/login'">LOG {{isLoggedIn ? 'OUT' : 'IN'}}</a>
-    <!-- <div>
-      <button  
-      *ngIf="!(isLoggedIn | async)" (click)="authService.login()">Log In</button>
-      <button 
-      *ngIf="isLoggedIn | async" (click)="authService.logout()"
-      >Log Out</button>
-    </div> -->
+    <!-- <a mat-raised-button [href]="isLoggedIn ? '/logout' : '/login'">LOG {{isLoggedIn ? 'OUT' : 'IN'}}</a> -->
+    <div>
+      <button *ngIf="!(isLoggedIn | async)" [routerLink]="'/login'">Log In</button>
+      <button *ngIf="isLoggedIn | async" (click)="authService.logout()">Log Out</button>
+    </div>
+    
+    
   </div>

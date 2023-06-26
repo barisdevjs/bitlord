@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { map } from 'rxjs/operators';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 export class AuthGuard implements CanActivate {
 
   constructor(
+    private authService: AuthService,
     private toastr: ToastrService,
     private router: Router,
   ) {}
@@ -17,16 +20,18 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    const flag = localStorage.getItem('token')
-
-    if (!flag) {
-      this.toastr.warning('Route is protected by guard  🔑', 'You will be redirected to home', { timeOut: 3000 })
-        .onHidden.pipe()
-        .subscribe(() => {
-          this.router.navigate(['/']);
-        });
-    }
-    return !!flag;
+    return this.authService.isLoggedIn().pipe(
+      map(isLoggedIn => {
+        if (!isLoggedIn) {
+          this.toastr.warning('Route is protected by guard  🔑', 'You will be redirected to home', { timeOut: 3000 })
+            .onHidden.pipe()
+            .subscribe(() => {
+              this.router.navigate(['/']);
+            });
+          return false;
+        }
+        return true;
+      })
+    );
   }
-  
 }
