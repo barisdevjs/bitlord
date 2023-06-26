@@ -12,15 +12,28 @@
 
 .mat-form-field {
   width: 100%;
+
+  & input {
+    font-size: large;
+    margin-top:1rem ;
+  }
+
+  & mat-label {
+    font-size: large;
+  }
 }
 
 .mat-card-content {
-  min-width: 300px;
+  min-width: 350px;
   max-width: 500px;
   display: flex;
   flex-direction: column;
   width: 300px;
-  row-gap: 1.25rem;
+  row-gap: 1.5rem;
+}
+
+.boxShadow {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 

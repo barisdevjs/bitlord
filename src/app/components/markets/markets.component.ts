@@ -85,9 +85,9 @@ export class MarketsComponent implements OnInit {
     this.router.navigateByUrl(`/markets/${marketCode}`);
   }
 
-handleCapsLock(capsLockValue: boolean): void {
-  this.capsLock = capsLockValue;
-}
+  handleCapsLock(capsLockValue: boolean): void {
+    this.capsLock = capsLockValue;
+  }
 
 
   getStyle(change24h: number): object {

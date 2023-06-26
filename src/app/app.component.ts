@@ -10,8 +10,6 @@ export class AppComponent implements OnInit {
 
   constructor() { }
 
-  // title = 'Bitlord';
-
   ngOnInit() {
   }
   

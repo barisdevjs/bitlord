@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Observable, catchError, map, of } from 'rxjs';
 import { RequestsService } from 'src/app/services/requests.service';
 import { MarketsResponse } from 'src/app/models/general.model';

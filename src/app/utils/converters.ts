@@ -27,5 +27,6 @@ export function dateFormatter(date: string): string {
       ['ETH', 'https://static.bitlo.com/cryptologossvg/eth.svg'],
     ]);
   
+    // Angular Logo for fallback
     return logoMap.get(assetCode) || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQShl8h1-nbKHsj_rIRNgRFcyKbHV7vY8oebmiIT1OqvA&s';
   }

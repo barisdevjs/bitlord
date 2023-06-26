@@ -26,7 +26,7 @@ export class AuthService {
     localStorage.setItem('token', token);
     this.isLoginSubject.next(true);
     this.toastr.success(message, 'Success', { timeOut: 3000 });
-    this.router.navigateByUrl('/profile'); // Redirect to the profile page after successful login
+    this.router.navigateByUrl('/profile'); 
   }
 
   logout(): void {
@@ -38,9 +38,6 @@ export class AuthService {
       this.router.navigateByUrl('/login');
     }, 2500);
   }
-  
-  
-  
 
   isLoggedIn(): Observable<boolean> {
     return this.isLoginSubject.asObservable();

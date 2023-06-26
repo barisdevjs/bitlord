@@ -15,7 +15,6 @@ export class BalancesComponent implements OnInit {
   constructor(
     private reqService: RequestsService,
     private toastr: ToastrService
-
   ) { }
 
   isLoading: boolean = true;
@@ -46,7 +45,6 @@ export class BalancesComponent implements OnInit {
       }
     });
   }
-  
 
   onCheckboxChange(): void {
     if (this.showLessThanOne) {
@@ -64,8 +62,5 @@ export class BalancesComponent implements OnInit {
       this.balancesArr.filter = '';
     }
   }
-  
-
-
 
 }

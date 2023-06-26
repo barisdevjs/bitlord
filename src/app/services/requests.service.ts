@@ -21,15 +21,6 @@ export class RequestsService {
 
   constructor(private http: HttpClient) { }
 
-  signUser(inputs: SignUser): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${environment.loginURL}` , inputs, httpOptions)
-  }
-
-  isLoggedIn(): Observable<boolean> {
-    const flag: boolean = !!localStorage.getItem('token');
-    return of(flag);
-  }
-
   getProfile(): Observable<ProfileResponse> {
     return this.http.post<ProfileResponse>(`${environment.meURL}`, httpOptions);
   }
@@ -54,7 +45,6 @@ export class RequestsService {
   getOpenOrders(): Observable<OpenOrdersResponse> {
     return this.http.post<OpenOrdersResponse>(`${environment.openOrdersUrl}`, httpOptions)
   }
-
   
 
 }
