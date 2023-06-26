@@ -4,6 +4,7 @@ import { Observable, catchError, map, of } from 'rxjs';
 import { RequestsService } from 'src/app/services/requests.service';
 import { MarketsResponse } from 'src/app/models/general.model';
 import { getLogoUrl } from 'src/app/utils/converters';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-market-details',
@@ -22,12 +23,14 @@ export class MarketDetailsComponent implements OnInit {
     lowestQuote24h: ""
   };
 
+  isLoading = true;
+
   assetLogo : string = ""
 
   constructor(
     private route: ActivatedRoute,
     private reqService: RequestsService,
-    private router: Router
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -35,13 +38,14 @@ export class MarketDetailsComponent implements OnInit {
     this.getSingleMarket().subscribe({
       next: (value: MarketsResponse | undefined) => {
         this.data = value!;
-        console.log(this.data)
       },
       error: (err) => {
-        console.log(err);
+        this.toastr.error('CODE' + err.error.code, err.error.message, { timeOut: 3000 });
+        this.isLoading = false;
       },
       complete : () => {
-        this.assetLogo = getLogoUrl(this.data.marketCode.substring(0,3))
+        this.assetLogo = getLogoUrl(this.data.marketCode.substring(0,3));
+        this.isLoading = false;
       }
     });
   }
@@ -65,7 +69,6 @@ export class MarketDetailsComponent implements OnInit {
     );
   }
 
-
   getStyle(weightedAverage24h: string | undefined): object {
     if (typeof weightedAverage24h !== 'undefined') {
       if (Number(weightedAverage24h) < 0) {
@@ -76,8 +79,5 @@ export class MarketDetailsComponent implements OnInit {
     }
     return { color: 'black' };
   }
-  
-
-
 
 }

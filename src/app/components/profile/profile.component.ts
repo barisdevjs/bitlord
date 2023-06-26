@@ -25,6 +25,8 @@ export class ProfileComponent implements OnInit {
   };
 
   isLoggedIn: boolean = false;
+  isLoading: boolean = true;
+
 
   displayedColumns: string[] = ['key', 'value'];
   dataSource: MatTableDataSource<{ key: string, value: string }> = new MatTableDataSource<{ key: string, value: string }>([]);
@@ -50,8 +52,11 @@ export class ProfileComponent implements OnInit {
         this.dataSource.data = this.formatData(data);
       },
       error: (err) => {
-        console.log(err);
-        this.toastr.error(err?.error?.message, 'WARNING', { timeOut: 5000 });
+        this.toastr.error(err?.error?.message || "Something went wrong",'WARNING', { timeOut: 5000 });
+        this.isLoading = false;
+      },
+      complete: () => {
+        this.isLoading = false;
       }
     });
   }

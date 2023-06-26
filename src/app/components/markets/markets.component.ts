@@ -4,6 +4,7 @@ import { MarketsResponse } from 'src/app/models/general.model';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-markets',
@@ -14,8 +15,11 @@ export class MarketsComponent implements OnInit {
 
   constructor(
     private reqService: RequestsService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService,
   ) { }
+
+  isLoading = true;
 
   pageSizeOptions: number[] = [5, 10, 15,20];
   pageIndex = 0;
@@ -27,6 +31,7 @@ export class MarketsComponent implements OnInit {
   displayedColumns: string[] = ['rowIndex', 'marketCode', 'currentQuote', 'change24h', 'change24hPercent', 'highestQuote24h', 'lowestQuote24h'];
 
   tooltipClass = 'bg-blue-600 text-sm';
+  capsLock = false;
 
 
   ngAfterViewInit() {
@@ -40,7 +45,11 @@ export class MarketsComponent implements OnInit {
         this.totalItems = value.length;
       },
       error: (err) => {
-        console.log(err);
+        this.toastr.error(err?.error?.message || "Something went wrong",'WARNING', { timeOut: 5000 });
+        this.isLoading = false;
+      },
+      complete: () => {
+        this.isLoading = false;
       }
     });
   }
@@ -75,7 +84,11 @@ export class MarketsComponent implements OnInit {
     const marketCode = row.marketCode; 
     this.router.navigateByUrl(`/markets/${marketCode}`);
   }
-  
+
+handleCapsLock(capsLockValue: boolean): void {
+  this.capsLock = capsLockValue;
+}
+
 
   getStyle(change24h: number): object {
     if (change24h < 0) {

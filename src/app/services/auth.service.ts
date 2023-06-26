@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { delay } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { SignUser } from '../models/general.model';
@@ -14,17 +14,19 @@ export class AuthService {
 
   constructor(
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    public toastr: ToastrService
   ) {}
 
   login(inputs: SignUser): Observable<any> {
     return this.http.post(`${environment.loginURL}`, inputs);
   }
 
-  handleLoginSuccess(token: string): void {
+  handleLoginSuccess(token: string, message:string): void {
     localStorage.setItem('token', token);
     this.isLoginSubject.next(true);
-      this.router.navigateByUrl('/profile'); // Redirect to the profile page after successful login
+    this.toastr.success(message, 'Success', { timeOut: 3000 });
+    this.router.navigateByUrl('/profile'); // Redirect to the profile page after successful login
   }
 
   logout(): void {
@@ -34,7 +36,7 @@ export class AuthService {
     setTimeout(() => {
       this.isLoginSubject.next(false);
       this.router.navigateByUrl('/login');
-    }, 1500);
+    }, 2500);
   }
   
   

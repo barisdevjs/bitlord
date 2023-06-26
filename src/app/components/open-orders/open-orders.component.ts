@@ -16,6 +16,7 @@ export class OpenOrdersComponent implements OnInit {
     private toastr: ToastrService
   ) { }
 
+  isLoading: boolean = true;
   openOrdersArr : MatTableDataSource<OpenOrders> = new MatTableDataSource<OpenOrders>();
   displayedColumns: string[] = ["marketCode","orderSide","orderDate", "price", "orderAmount", "fillAmount", "fillPercent"];
   
@@ -32,6 +33,10 @@ export class OpenOrdersComponent implements OnInit {
       },
       error: (err) => {
         this.toastr.error('CODE' + err.error.code, err.error.message, { timeOut: 3000 });
+        this.isLoading = false;
+      },
+      complete: () => {
+        this.isLoading = false;
       }
     })
   }

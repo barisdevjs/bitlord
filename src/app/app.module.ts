@@ -33,6 +33,8 @@ import { FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SlashPipe } from './pipes/slash.pipe';
 import { HeaderComponent } from './components/header/header.component';
+import { CapslockDirective } from './directives/capslock.directive';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { HeaderComponent } from './components/header/header.component';
     BalancesComponent,
     OpenOrdersComponent,
     SlashPipe,
-    HeaderComponent
+    HeaderComponent,
+    CapslockDirective,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,8 @@ import { HeaderComponent } from './components/header/header.component';
     MatPaginatorModule,
     MatCheckboxModule,
     FormsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

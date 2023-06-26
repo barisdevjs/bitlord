@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate {
     return this.authService.isLoggedIn().pipe(
       map(isLoggedIn => {
         if (!isLoggedIn) {
-          this.toastr.warning('Route is protected by guard  🔑', 'You will be redirected to home', { timeOut: 3000 })
+          this.toastr.warning('Route is protected by guard  🔑 \n Sadece giriş yapmış kullanıcılar bu alanı görüntüleyebilir', 'You will be redirected to home', { timeOut: 3000 })
             .onHidden.pipe()
             .subscribe(() => {
               this.router.navigate(['/']);

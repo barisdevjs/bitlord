@@ -1,6 +1,6 @@
 <div class=" flex flex-col justify-start items-center mx-auto mt-16 gap-6">
     <h1>{{marketCode}} details</h1>
-    <ul class="space-y-1 flex flex-col justify-between items-center terminal gap-y-1">
+    <ul *ngIf="!isLoading" class="space-y-1 flex flex-col justify-between items-center terminal gap-y-1">
         <li class="text-lg">
             <span class="font-semibold">Market Code:</span>
             <span>{{ data.marketCode | slash }}</span>
@@ -30,8 +30,12 @@
             <span [ngStyle]="getStyle(data.weightedAverage24h)"> {{ data.weightedAverage24h | number:'1.2-2'}}</span>
         </li>
       </ul>
+      <div *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center; background: white;">
+        <mat-progress-spinner color="primary" mode="indeterminate">
+        </mat-progress-spinner>
+    </div>
       <div>
-            <img [src]="assetLogo" alt="Logo" width="100" height="100" class="animate-pulse">
+            <img *ngIf="!isLoading" [src]="assetLogo" alt="Logo" width="100" height="100" class="animate-pulse">
       </div>
       <div class="text-2xl">Navigate to -> </div>
       <div class="w-1/6 flex justify-between">

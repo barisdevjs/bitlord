@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { RequestsService } from 'src/app/services/requests.service';
-import { LoginResponse, SignUser } from 'src/app/models/general.model';
+import {  SignUser } from 'src/app/models/general.model';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { delay, first, tap } from 'rxjs';
+import {  first } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
 
@@ -38,32 +38,15 @@ export class LoginComponent implements OnInit {
   }
 
   logUser() {
-    // if (this.logForm.valid) {
-    //   this.reqService.signUser(this.logForm.value).pipe(
-    //     tap((data: LoginResponse) => {
-    //       data?.token && localStorage.setItem('token', data?.token);
-    //       this.toastr.success(data?.message, 'Success', { timeOut: 3000 });
-    //     }),
-    //     delay(1500)
-    //   ).subscribe({
-    //     next: () => {
-    //       this.router.navigate(['/profile']);
-    //     },
-    //     error: (err) => {
-    //       console.log(err);
-    //       this.toastr.error(err?.message, 'WARNING', { timeOut: 5000 });
-    //     }
-    //   });
-    // }
     this.authService.login(this.logForm.value)
     .pipe(first())
     .subscribe({
       next: (value) => {
-        console.log(value);
-        this.authService.handleLoginSuccess(value.token);
+        this.authService.handleLoginSuccess(value.token, value.message);
       },
       error: (error) => {
-        console.log(error);
+        console.error(error);
+        this.toastr.error("Kullanıcı adı ya da parola yanlış", 'Error', { timeOut: 3000 });
       },
     });
   }
