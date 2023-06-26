@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth.service';
 import { RequestsService } from 'src/app/services/requests.service';
 import { ProfileResponse } from 'src/app/types/user-type';
 import { dateFormatter, formatPhoneNumberValue } from 'src/app/utils/converters';
@@ -30,11 +31,12 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private reqService: RequestsService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private auth : AuthService
   ) { }
 
   ngOnInit(): void {
-    this.reqService.isLoggedIn().subscribe({
+    this.auth.isLoggedIn().subscribe({
       next: (isLoggedIn: boolean) => {
         this.isLoggedIn = isLoggedIn;
       }

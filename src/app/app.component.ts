@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { RequestsService } from './services/requests.service';
-import { MatTableDataSource } from '@angular/material/table';
-
 
 
 @Component({
@@ -11,25 +8,13 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class AppComponent implements OnInit {
 
-  constructor(
-    private reqService : RequestsService
-  ) { }
+  constructor() { }
 
-  title = 'Bitlord';
-  isLoggedIn : boolean = false;
+  // title = 'Bitlord';
 
   ngOnInit() {
-
-    this.reqService.isLoggedIn().subscribe({
-      next : (data:boolean) => {
-         this.isLoggedIn = data
-      },
-      error : (error:any) => {
-        console.log(error);
-      }
-    })
-
   }
+  
 }
 
 

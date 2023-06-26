@@ -32,6 +32,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SlashPipe } from './pipes/slash.pipe';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { SlashPipe } from './pipes/slash.pipe';
     MarketDetailsComponent,
     BalancesComponent,
     OpenOrdersComponent,
-    SlashPipe
+    SlashPipe,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
