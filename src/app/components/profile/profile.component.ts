@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { RequestsService } from 'src/app/services/requests.service';
 import { ProfileResponse } from 'src/app/models/general.model';
-import { dateFormatter, formatPhoneNumberValue } from 'src/app/utils/converters';
+import { dateFormatter, dateFormatterLong, formatPhoneNumberValue } from 'src/app/utils/converters';
 
 @Component({
   selector: 'app-profile',
@@ -70,6 +70,11 @@ export class ProfileComponent implements OnInit {
       if (item.key === 'dateOfBirth') {
         item.value = dateFormatter(item.value);
       }
+
+      if (item.key === 'updateDate') {
+        item.value = dateFormatterLong(item.value);
+      }
+
       return item;
     });
   }

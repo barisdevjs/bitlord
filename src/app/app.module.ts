@@ -34,8 +34,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { SlashPipe } from './pipes/slash.pipe';
 import { HeaderComponent } from './components/header/header.component';
 import { CapslockDirective } from './directives/capslock.directive';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSortModule} from '@angular/material/sort';
+
 
 @NgModule({
   declarations: [
@@ -75,7 +77,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     FormsModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSortModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

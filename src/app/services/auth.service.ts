@@ -23,7 +23,7 @@ export class AuthService {
   }
 
   handleLoginSuccess(token: string, message:string): void {
-    localStorage.setItem('token', token);
+    sessionStorage.setItem('token', token);
     this.isLoginSubject.next(true);
     this.toastr.success(message, 'Success', { timeOut: 3000 });
     this.router.navigateByUrl('/profile'); 
@@ -31,7 +31,7 @@ export class AuthService {
 
   logout(): void {
     this.router.navigateByUrl('/logout');
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
   
     setTimeout(() => {
       this.isLoginSubject.next(false);
@@ -44,6 +44,6 @@ export class AuthService {
   }
 
   private hasToken(): boolean {
-    return !!localStorage.getItem('token');
+    return !!sessionStorage.getItem('token');
   }
 }

@@ -4,7 +4,7 @@ import { Observable, map, of } from 'rxjs';
 import { BalancesResponse, LoginResponse, MarketsResponse, OpenOrdersResponse, ProfileResponse, SignUser } from '../models/general.model';
 import { environment } from 'src/environments/environment';
 
-const token = localStorage.getItem('token');
+const token = sessionStorage.getItem('token');
 
 const httpOptions = {
   headers: new HttpHeaders({

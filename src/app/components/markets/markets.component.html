@@ -9,7 +9,8 @@
     <p *ngIf="capsLock">Caps Lock is active</p>
   </div>
   
-  <table *ngIf="!isLoading" mat-table [dataSource]="marketsArr" class="mat-elevation-z8 w-full">
+  <table mat-table [hidden]="isLoading || !marketsArr.data" [dataSource]="marketsArr" class="mat-elevation-z8 w-full" 
+  matSort (matSortChange)="announceSortChange($event)" matSortActive="currentQuote" matSortDirection="desc">
 
     <ng-container matColumnDef="rowIndex">
       <th mat-header-cell *matHeaderCellDef> No </th>
@@ -17,17 +18,17 @@
     </ng-container>
 
     <ng-container matColumnDef="marketCode">
-      <th mat-header-cell *matHeaderCellDef> Market Code </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Market Code </th>
       <td mat-cell *matCellDef="let element"  [matTooltip]="'Click to go to the details'" [matTooltipClass]="tooltipClass" > {{ element.marketCode }} </td>
     </ng-container>
 
     <ng-container matColumnDef="currentQuote">
-      <th mat-header-cell *matHeaderCellDef> Current Quote </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Quote"> Current Quote </th>
       <td mat-cell *matCellDef="let element"> {{ element.currentQuote | number:'1.2-2' }} </td>
     </ng-container>
 
     <ng-container matColumnDef="change24h">
-      <th mat-header-cell *matHeaderCellDef>Change (24h)</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Change (24h)</th>
       <td mat-cell *matCellDef="let element" [ngStyle]="getStyle(element.change24h)">
         {{ element.change24h }}
       </td>

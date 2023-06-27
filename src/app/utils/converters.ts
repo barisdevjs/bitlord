@@ -3,11 +3,25 @@ export function dateFormatter(date: string): string {
       day: 'numeric',
       month: 'long',
       year:"numeric",
-      timeZone: 'UTC'
+      timeZone: 'UTC',
     };
   
     const formattedDate = new Intl.DateTimeFormat('tr-TR', options).format(new Date(date));
     return formattedDate;
+  }
+
+  export function dateFormatterLong(dateString : string): string {
+    const date = new Date(dateString);
+    const formatter = new Intl.DateTimeFormat('tr-TR', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+      timeZone: 'UTC',
+    });
+    return formatter.format(date);
   }
 
   
