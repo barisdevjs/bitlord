@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.logForm = this.fb.group({
-      identifier: ['', [Validators.required, Validators.email]],
+      identifier: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(6)]],
     });
 
@@ -40,11 +40,12 @@ export class LoginComponent implements OnInit {
     .pipe(first())
     .subscribe({
       next: (value) => {
-        this.authService.handleLoginSuccess(value.token, value.message);
+        this.authService.handleLoginSuccess(value.token as string, value.message);
       },
       error: (error) => {
         console.error(error);
         this.toastr.error("Kullanıcı adı ya da parola yanlış", 'Error', { timeOut: 3000 });
+        this.isLoading = false;
       },
       complete:() => {
         this.isLoading = false;

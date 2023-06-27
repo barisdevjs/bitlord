@@ -5,8 +5,9 @@
         <mat-card-content class="p-8">
           <mat-form-field class="example-full-width">
             <mat-label>Email</mat-label>
-            <input type="email" matInput formControlName="identifier" placeholder="test@test.com">
-            <mat-error *ngIf="logForm.get('identifier')?.hasError('identifier') && !logForm.get('identifier')?.hasError('required')">
+            <input type="email" matInput formControlName="identifier" placeholder="test@test.com"
+            >
+            <mat-error *ngIf="logForm.get('identifier')?.hasError('pattern')">
               Lütfen geçerli bir e-posta adresi giriniz
             </mat-error>
             <mat-error *ngIf="logForm.get('identifier')?.hasError('required')">
@@ -24,6 +25,9 @@
             </mat-error>
             <mat-error *ngIf="logForm.get('password')?.hasError('maxlength')">
               Password must have a minimum length of 6 characters
+            </mat-error>
+            <mat-error *ngIf="logForm.invalid && logForm.touched">
+              “Lütfen gerekli alanları doldurunuz.
             </mat-error>
           </mat-form-field>
           <div class="flex justify-center">

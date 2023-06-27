@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { SignUser } from '../models/general.model';
+import { LoginResponse, SignUser } from '../models/general.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +18,8 @@ export class AuthService {
     public toastr: ToastrService
   ) {}
 
-  login(inputs: SignUser): Observable<any> {
-    return this.http.post(`${environment.loginURL}`, inputs);
+  login(inputs: SignUser): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${environment.loginURL}`, inputs);
   }
 
   handleLoginSuccess(token: string, message:string): void {

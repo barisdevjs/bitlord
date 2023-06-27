@@ -2,12 +2,9 @@
 
   <mat-form-field class="w-full">
     <mat-label>Filter -- Case Sensitive</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. BTC" #input>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. BTC" #input appCapslock (capsLock)="handleCapsLock($event)">
+    <mat-hint *ngIf="capsLock" align="start" class="!text-red-600">Caps Lock is active</mat-hint>
   </mat-form-field>
-
-  <div appCapslock (capsLock)="handleCapsLock($event)">
-    <p *ngIf="capsLock">Caps Lock is active</p>
-  </div>
   
   <table mat-table [hidden]="isLoading || !marketsArr.data" [dataSource]="marketsArr" class="mat-elevation-z8 w-full" 
   matSort (matSortChange)="announceSortChange($event)" matSortActive="currentQuote" matSortDirection="desc">
@@ -30,7 +27,7 @@
     <ng-container matColumnDef="change24h">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Change (24h)</th>
       <td mat-cell *matCellDef="let element" [ngStyle]="getStyle(element.change24h)">
-        {{ element.change24h }}
+        {{ element.change24h | number:'1.2-2'}}
       </td>
     </ng-container>
 
@@ -73,7 +70,7 @@
   </mat-progress-spinner>
 </div>
 
-  <ul *ngIf="marketsArr.filteredData && marketsArr.filteredData.length > 0" class="mt-6 space-y-2">
+  <ul *ngIf="marketsArr.filteredData && marketsArr.filteredData.length > 0" class="space-y-2">
     <li *ngIf="countPositiveChanges() > 0">
       <span class="font-bold">{{ countPositiveChanges() }}</span>
       adet marketin fiyat değişim yüzdesi pozitif olmuştur.
@@ -102,7 +99,7 @@
       adet market vardır.
     </li>
     <li>
-      Tüm marketlerdeki fiyatların toplamının (currentQuote) aritmetik ortalaması <span class="font-bold">{{
+      Tüm marketlerdeki fiyatların toplamının aritmetik ortalaması <span class="font-bold">{{
         calculateAveragePrice() | number:'1.2-2' }}</span> TRY'dir.
     </li>
     <li *ngIf="usdExchangeRate">

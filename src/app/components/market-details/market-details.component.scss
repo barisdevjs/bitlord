@@ -17,8 +17,6 @@ ul > li span:first-child {
     width: 80%;
     max-width: 600px;
     border-radius: 6px;
-    padding-top: 45px;
-    margin-top: 8px;
     overflow: hidden;
     background-color: rgb(15, 15, 16);
     color: white;
@@ -26,12 +24,9 @@ ul > li span:first-child {
   }
 
   .terminal::before {
-    // content: "\2022 \2022 \2022";
     position: absolute;
     top: 0;
     left: 0;
-    // height: 4px;
-    // background: rgb(58, 58, 58);
     color: white;
     width: 100%;
     font-size: 2rem;

@@ -44,7 +44,7 @@ export class MarketDetailsComponent implements OnInit {
         this.isLoading = false;
       },
       complete : () => {
-        this.assetLogo = getLogoUrl(this.data.marketCode.substring(0,3));
+        this.assetLogo = getLogoUrl(this.data.marketCode.split("-")[0]);
         this.isLoading = false;
       }
     });

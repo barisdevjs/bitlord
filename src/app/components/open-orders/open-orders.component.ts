@@ -29,7 +29,6 @@ export class OpenOrdersComponent implements OnInit {
           return order;
         });
         this.openOrdersArr = new MatTableDataSource<OpenOrders>(openOrders);
-        console.log(this.openOrdersArr);
       },
       error: (err) => {
         this.toastr.error('CODE' + err.error.code, err.error.message, { timeOut: 3000 });
