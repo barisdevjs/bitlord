@@ -71,8 +71,8 @@
 </div>
 
   <ul *ngIf="marketsArr.filteredData && marketsArr.filteredData.length > 0" class="space-y-2">
-    <li *ngIf="countPositiveChanges() > 0">
-      <span class="font-bold">{{ countPositiveChanges() }}</span>
+    <li *ngIf="countPositiveChanges() > 0">Bugün
+      <span class="font-bold"> {{ countPositiveChanges() }}</span>
       adet marketin fiyat değişim yüzdesi pozitif olmuştur.
     </li>
     <li *ngIf="maxIncreaseMarket">
