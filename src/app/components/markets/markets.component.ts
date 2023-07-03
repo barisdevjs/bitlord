@@ -84,7 +84,7 @@ export class MarketsComponent implements OnInit, AfterViewInit {
     }
   }
 
-  navigateToMarketDetails(row: any) {
+  navigateToMarketDetails(row: MarketsResponse) {
     const marketCode = row.marketCode;
     this.router.navigateByUrl(`/markets/${marketCode}`);
   }
@@ -110,13 +110,13 @@ export class MarketsComponent implements OnInit, AfterViewInit {
     return this.marketsArr.filteredData.filter((market) => parseFloat(market.change24hPercent) > 0).length;
   }
 
-  get maxIncreaseMarket(): any {
+  get maxIncreaseMarket(): MarketsResponse {
     return this.marketsArr.filteredData.reduce((maxMarket, currentMarket) => {
       return currentMarket.change24hPercent > maxMarket.change24hPercent ? currentMarket : maxMarket;
     }, this.marketsArr.filteredData[0]);
   }
 
-  get maxDecreaseMarket(): any {
+  get maxDecreaseMarket(): MarketsResponse {
     return this.marketsArr.filteredData.reduce((minMarket, currentMarket) => {
       return currentMarket.change24hPercent < minMarket.change24hPercent ? currentMarket : minMarket;
     }, this.marketsArr.filteredData[0]);
