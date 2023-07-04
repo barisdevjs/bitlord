@@ -15,7 +15,7 @@
         </li>
         <li class="text-lg">
             <span class="font-semibold">Change (24h %):</span>
-            <span>{{ data.change24hPercent | number:'1.2-2'}}</span>
+            <span [ngStyle]="getStyle(data.change24hPercent)">{{ data.change24hPercent | number:'1.2-2'}}</span>
         </li>
         <li class="text-lg">
             <span class="font-semibold">Highest Quote (24h):</span>
@@ -27,7 +27,7 @@
         </li>
         <li class="text-lg">
             <span class="font-semibold">Weighted Average (24h):</span>
-            <span [ngStyle]="getStyle(data.weightedAverage24h)"> {{ data.weightedAverage24h | number:'1.2-2'}}</span>
+            <span> {{ data.weightedAverage24h | number:'1.2-2'}}</span>
         </li>
       </ul>
       <div *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center; background: white;">

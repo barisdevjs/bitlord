@@ -19,7 +19,7 @@ export function dateFormatterLong(dateString: string): string {
     hour: 'numeric',
     minute: 'numeric',
     second: 'numeric',
-    timeZone: 'UTC',
+    timeZone: 'Europe/Istanbul',
   });
   return formatter.format(date);
 }

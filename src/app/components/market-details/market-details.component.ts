@@ -69,15 +69,15 @@ export class MarketDetailsComponent implements OnInit {
     );
   }
 
-  getStyle(weightedAverage24h: string | undefined): object {
-    if (typeof weightedAverage24h !== 'undefined') {
-      if (Number(weightedAverage24h) < 0) {
+  getStyle(change24hPercent: string | undefined): object {
+    if (typeof change24hPercent !== 'undefined') {
+      if (Number(change24hPercent) < 0) {
         return { color: 'red', fontSize : "1.25rem" };
-      } else if (Number(weightedAverage24h) > 0) {
+      } else if (Number(change24hPercent) > 0) {
         return { color: 'green', fontSize : "1.25rem" };
       }
     }
-    return { color: 'black' };
+    return { color: 'white' };
   }
 
 }
