@@ -26,7 +26,7 @@
 
     <ng-container matColumnDef="change24h">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Change (24h)</th>
-      <td mat-cell *matCellDef="let element" [ngStyle]="getStyle(element.change24h)">
+      <td mat-cell *matCellDef="let element" >
         {{ element.change24h | number:'1.2-2'}}
       </td>
     </ng-container>
@@ -34,7 +34,7 @@
 
     <ng-container matColumnDef="change24hPercent">
       <th mat-header-cell *matHeaderCellDef> Change (24h %) </th>
-      <td mat-cell *matCellDef="let element"> {{ element.change24hPercent }} </td>
+      <td mat-cell *matCellDef="let element" [ngStyle]="getStyle(element.change24hPercent)"> % {{ element.change24hPercent }} </td>
     </ng-container>
 
     <ng-container matColumnDef="highestQuote24h">

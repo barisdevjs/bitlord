@@ -94,10 +94,10 @@ export class MarketsComponent implements OnInit, AfterViewInit {
   }
 
 
-  getStyle(change24h: number): object {
-    if (change24h < 0) {
+  getStyle(change24hPercent: number): object {
+    if (change24hPercent < 0) {
       return { color: 'red' };
-    } else if (change24h > 0) {
+    } else if (change24hPercent > 0) {
       return { color: 'green' };
     } else {
       return { color: 'black' };
