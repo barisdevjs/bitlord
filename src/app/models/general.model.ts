@@ -59,3 +59,19 @@ export interface OpenOrders {
 export interface OpenOrdersResponse extends GeneralI {
     openOrders?: OpenOrders[]
 }
+
+export interface TradeData {
+    e: string;
+    E: number;
+    s: string;
+    t: number;
+    p: string;
+    q: string;
+    b: number;
+    a: number;
+    T: number;
+    m: boolean;
+    M: boolean;
+  }
+
+  

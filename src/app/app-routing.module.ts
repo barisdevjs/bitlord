@@ -9,6 +9,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { MarketDetailsComponent } from './components/market-details/market-details.component';
 import { BalancesComponent } from './components/balances/balances.component';
 import { OpenOrdersComponent } from './components/open-orders/open-orders.component';
+import { WebSocketComponent } from './components/web-socket/web-socket.component';
 
 const routes: Routes = [ 
   { path: '', component: HomeComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'logout',  component : LogoutComponent, canActivate:[AuthGuard] }, 
   { path: 'markets',  component : MarketsComponent }, 
   { path: 'markets/:marketCode', component: MarketDetailsComponent },
+  { path: 'websocket', component: WebSocketComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];
 

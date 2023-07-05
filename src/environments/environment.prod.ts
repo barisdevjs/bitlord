@@ -5,4 +5,5 @@ export const environment = {
   marketsURL : "https://akademi-cp.bitlo.com/api/interview/markets",
   balancesURL : "https://akademi-cp.bitlo.com/api/interview/auth/balances",
   openOrdersUrl : "https://akademi-cp.bitlo.com/api/interview/auth/open-orders",
+  wsBinanceUrl : "wss://stream.binance.com:9443/ws/etheur@trade"
 };

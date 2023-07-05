@@ -1,0 +1,18 @@
+<div class="flex flex-col justify-start items-center h-auto mx-auto mt-16  2xl:gap-8">
+    <h2>Data stream from Binance Web Socket for Ethereum</h2>
+    <p>Wait a little bit to see the data stream depends on Binance Web Socket</p>
+    <div class="flex gap-x-8 mb-4">
+      <a mat-raised-button color="primary" (click)="connect()">Start Stream</a>
+      <a mat-raised-button color="warn" (click)="close()">Stop Stream</a>
+    </div>
+    <ul>
+      <li *ngFor="let trade of ws.receivedData$ | async">
+        <strong>Asset:</strong> {{ trade.s }},
+        <strong>Trade:</strong> {{ trade.t }},
+        <strong>Price:</strong> {{ trade.p }},
+        <strong>Quantity:</strong> {{ trade.q }},
+        <strong>Time:</strong> {{ trade.T | date:'medium' }},
+      </li>
+    </ul>
+  </div>
+  

@@ -37,6 +37,7 @@ import { CapslockDirective } from './directives/capslock.directive';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSortModule} from '@angular/material/sort';
+import { WebSocketComponent } from './components/web-socket/web-socket.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { MatSortModule} from '@angular/material/sort';
     SlashPipe,
     HeaderComponent,
     CapslockDirective,
+    WebSocketComponent,
   ],
   imports: [
     BrowserModule,
